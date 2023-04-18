@@ -4,6 +4,8 @@ import FacebookProvider from "next-auth/providers/facebook";
 import GithubProvider from "next-auth/providers/github";
 import TwitterProvider from "next-auth/providers/twitter";
 import Auth0Provider from "next-auth/providers/auth0";
+import DiscordProvider from "next-auth/providers/discord";
+import SlackProvider from "next-auth/providers/slack";
 // import AppleProvider from "next-auth/providers/apple"
 // import EmailProvider from "next-auth/providers/email"
 
@@ -44,6 +46,14 @@ export const authOptions: NextAuthOptions = {
         timeout: 10000,
       },
     }),
+    DiscordProvider({
+      clientId: `${process.env.DISCORD_ID}`,
+      clientSecret: `${process.env.DISCORD_SECRET}`
+    }),
+    SlackProvider({
+      clientId: `${process.env.SLACK_ID}`,
+      clientSecret: `${process.env.SLACK_SECRET}`
+    })
     // TwitterProvider({
     //   clientId: process.env.TWITTER_ID,
     //   clientSecret: process.env.TWITTER_SECRET,
