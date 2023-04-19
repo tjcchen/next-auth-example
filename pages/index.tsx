@@ -2,7 +2,7 @@ import Layout from "../components/layout"
 
 export default function IndexPage() {
 
-  console.log('index page');
+  console.log('---index page---');
 
   return (
     <Layout>

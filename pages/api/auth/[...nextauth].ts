@@ -35,22 +35,25 @@ export const authOptions: NextAuthOptions = {
     //   clientId: process.env.FACEBOOK_ID,
     //   clientSecret: process.env.FACEBOOK_SECRET,
     // }),
-    GithubProvider({
-      clientId: process.env.GITHUB_ID,
-      clientSecret: process.env.GITHUB_SECRET,
-    }),
+    // GithubProvider({
+    //   clientId: process.env.GITHUB_ID,
+    //   clientSecret: process.env.GITHUB_SECRET,
+    // }),
     GoogleProvider({
       clientId: process.env.GOOGLE_ID,
       clientSecret: process.env.GOOGLE_SECRET,
+      httpOptions: {
+        timeout: 40000,
+      },
     }),
-    DiscordProvider({
-      clientId: `${process.env.DISCORD_ID}`,
-      clientSecret: `${process.env.DISCORD_SECRET}`
-    }),
-    SlackProvider({
-      clientId: `${process.env.SLACK_ID}`,
-      clientSecret: `${process.env.SLACK_SECRET}`
-    })
+    // DiscordProvider({
+    //   clientId: `${process.env.DISCORD_ID}`,
+    //   clientSecret: `${process.env.DISCORD_SECRET}`
+    // }),
+    // SlackProvider({
+    //   clientId: `${process.env.SLACK_ID}`,
+    //   clientSecret: `${process.env.SLACK_SECRET}`
+    // })
     // TwitterProvider({
     //   clientId: process.env.TWITTER_ID,
     //   clientSecret: process.env.TWITTER_SECRET,
@@ -64,6 +67,9 @@ export const authOptions: NextAuthOptions = {
   theme: {
     colorScheme: "light",
   },
+  pages: {
+    signIn: "/auth/signin",
+  },
   debug: true,
   callbacks: {
     async jwt({ token }) {
@@ -75,7 +81,5 @@ export const authOptions: NextAuthOptions = {
 
 console.log("google id", process.env.GOOGLE_ID);
 console.log("google secret", process.env.GOOGLE_SECRET);
-console.log("github id", process.env.GITHUB_ID);
-console.log("github secret", process.env.GITHUB_SECRET);
 
 export default NextAuth(authOptions);
