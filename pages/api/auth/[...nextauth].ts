@@ -67,9 +67,6 @@ export const authOptions: NextAuthOptions = {
   theme: {
     colorScheme: "light",
   },
-  pages: {
-    signIn: "/auth/signin",
-  },
   debug: true,
   callbacks: {
     async jwt({ token }) {
